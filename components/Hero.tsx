@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { Mail, ExternalLink } from "lucide-react";
 import Badge from "./Badge";
 import Glow from "./Glow";
@@ -19,21 +19,23 @@ const containerVariants = {
   },
 };
 
-const itemVariants = {
+const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
+
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 28 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.7, ease: EASE },
   },
 };
 
-const logoVariants = {
+const logoVariants: Variants = {
   hidden: { opacity: 0, scale: 0.88 },
   visible: {
     opacity: 1,
     scale: 1,
-    transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.9, ease: EASE },
   },
 };
 
