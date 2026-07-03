@@ -21,9 +21,9 @@ export const metadata: Metadata = {
     "coming soon",
     "premium websites",
   ],
-  authors: [{ name: "DesignPav", url: "https://designpav.in" }],
-  creator: "DesignPav",
-  publisher: "DesignPav",
+  authors: [{ name: "Krish Undre", url: "https://krishundre.vercel.app/" }],
+  creator: "Krish Undre",
+  publisher: "Krish Undre",
   robots: {
     index: true,
     follow: true,
