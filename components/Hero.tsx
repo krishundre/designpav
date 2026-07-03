@@ -2,10 +2,11 @@
 
 import Image from "next/image";
 import { motion, useReducedMotion, type Variants } from "framer-motion";
-import { Mail, ExternalLink } from "lucide-react";
+import { Mail, ArrowRight, Compass } from "lucide-react";
 import Badge from "./Badge";
 import Glow from "./Glow";
 import AnimatedButton from "./AnimatedButton";
+import BlurText from "./reactbits/BlurText";
 
 /* ── Animation variants ─────────────────────────────────────────── */
 const containerVariants = {
@@ -42,15 +43,23 @@ const logoVariants: Variants = {
 export default function Hero() {
   const shouldReduce = useReducedMotion();
 
+  const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault();
+    const element = document.querySelector(targetId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   return (
     <section
       id="main-content"
-      aria-label="DesignPav Coming Soon"
-      className="relative z-10 flex-1 flex flex-col items-center justify-center px-6 py-16 min-h-screen"
+      aria-label="DesignPav Introduction"
+      className="relative z-10 flex-1 flex flex-col items-center justify-center px-6 py-20 min-h-screen"
     >
       <motion.div
         className="flex flex-col items-center text-center gap-8 w-full"
-        style={{ maxWidth: 700 }}
+        style={{ maxWidth: 800 }}
         variants={containerVariants}
         initial={shouldReduce ? "visible" : "hidden"}
         animate="visible"
@@ -84,8 +93,8 @@ export default function Hero() {
               shouldReduce
                 ? {}
                 : {
-                    y: [0, -10, -4, -8, 0],
-                    rotate: [0, 1.5, -0.5, 1, 0],
+                    y: [0, -8, -3, -6, 0],
+                    rotate: [0, 1, -0.5, 0.5, 0],
                   }
             }
             transition={{
@@ -97,13 +106,13 @@ export default function Hero() {
           >
             <Image
               src="/logo.png"
-              alt="DesignPav logo — Creative Digital Studio"
-              width={160}
-              height={160}
+              alt="DesignPav Logo"
+              width={140}
+              height={140}
               priority
               style={{
                 objectFit: "contain",
-                width: "160px",
+                width: "140px",
                 height: "auto",
                 filter: "drop-shadow(0 0 24px rgba(109,94,248,0.35)) drop-shadow(0 0 48px rgba(109,94,248,0.15))",
               }}
@@ -119,22 +128,21 @@ export default function Hero() {
         {/* ── Heading + glow ────────────────────────────────────────── */}
         <motion.div
           variants={itemVariants}
-          className="relative flex flex-col items-center"
+          className="relative flex flex-col items-center w-full"
         >
           {/* Glow behind heading */}
           <Glow />
 
           <h1
-            className="relative font-bold leading-tight tracking-tight"
+            className="relative font-bold leading-tight tracking-tight max-w-3xl"
             style={{
-              fontSize: "clamp(2rem, 5.5vw, 3.25rem)",
+              fontSize: "clamp(2.25rem, 6.2vw, 3.85rem)",
               color: "#FFFFFF",
-              letterSpacing: "-0.025em",
+              letterSpacing: "-0.03em",
               lineHeight: 1.1,
             }}
           >
-            {/* Gradient text for 'Exceptional' */}
-            We&apos;re Building Something{" "}
+            We Design & Build <br />
             <span
               style={{
                 background:
@@ -145,7 +153,7 @@ export default function Hero() {
                 display: "inline-block",
               }}
             >
-              Exceptional.
+              Premium Digital Experiences
             </span>
           </h1>
         </motion.div>
@@ -153,60 +161,58 @@ export default function Hero() {
         {/* ── Description ───────────────────────────────────────────── */}
         <motion.div variants={itemVariants} className="flex flex-col gap-3">
           <p
-            className="leading-relaxed"
+            className="leading-relaxed mx-auto"
             style={{
               fontSize: "clamp(0.95rem, 2.2vw, 1.08rem)",
               color: "#A1A1AA",
-              maxWidth: 560,
+              maxWidth: 580,
               lineHeight: 1.75,
             }}
           >
-            DesignPav is crafting a premium digital experience focused on
-            designing modern websites, scalable web applications, and powerful
-            online brands.
-          </p>
-          <p
-            className="leading-relaxed"
-            style={{
-              fontSize: "clamp(0.9rem, 2vw, 1rem)",
-              color: "#71717A",
-            }}
-          >
-            We&apos;re currently putting the finishing touches on our new home.
+            DesignPav is a premium creative studio crafting bespoke websites, scalable web applications, and powerful digital brand assets for forward-thinking brands.
           </p>
         </motion.div>
 
         {/* ── CTA Buttons ───────────────────────────────────────────── */}
         <motion.div
           variants={itemVariants}
-          className="flex flex-col sm:flex-row items-center gap-4 pt-2"
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2 w-full"
           role="group"
-          aria-label="Call to action buttons"
+          aria-label="Action buttons"
         >
-          <AnimatedButton
-            id="contact-us-btn"
-            variant="primary"
-            href="mailto:chef@designpav.in"
-            icon={<Mail size={15} aria-hidden="true" />}
+          <a
+            href="#contact"
+            onClick={(e) => handleScrollTo(e, "#contact")}
+            className="w-full sm:w-auto"
           >
-            Contact Us
-          </AnimatedButton>
+            <AnimatedButton
+              id="start-project-btn"
+              variant="primary"
+              icon={<ArrowRight size={15} aria-hidden="true" />}
+            >
+              Start Project
+            </AnimatedButton>
+          </a>
 
-          <AnimatedButton
-            id="view-portfolio-btn"
-            variant="secondary"
-            disabled
-            tooltip="Launching Soon"
-            icon={<ExternalLink size={15} aria-hidden="true" />}
+          <a
+            href="#work"
+            onClick={(e) => handleScrollTo(e, "#work")}
+            className="w-full sm:w-auto"
           >
-            View Portfolio
-          </AnimatedButton>
+            <AnimatedButton
+              id="view-work-btn"
+              variant="secondary"
+              icon={<Compass size={15} aria-hidden="true" />}
+            >
+              View Work
+            </AnimatedButton>
+          </a>
         </motion.div>
 
         {/* ── Subtle scroll indicator ───────────────────────────────── */}
         <motion.div
           variants={itemVariants}
-          className="flex flex-col items-center gap-2 pt-4"
+          className="flex flex-col items-center gap-2 pt-6"
           aria-hidden="true"
         >
           <div
