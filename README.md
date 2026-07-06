@@ -42,7 +42,6 @@ DesignPav is a premium agency website engineered for a creative digital studio. 
 
 ```text
 ├── app/
-│   ├── favicon.ico
 │   ├── globals.css         # Styling directives, design tokens, keyframes
 │   ├── layout.tsx          # Meta tags, viewport layout, Font declarations
 │   └── page.tsx            # Main layout rendering sections
