@@ -84,9 +84,9 @@ export default function Hero() {
               shouldReduce
                 ? {}
                 : {
-                    y: [0, -10, -4, -8, 0],
-                    rotate: [0, 1.5, -0.5, 1, 0],
-                  }
+                  y: [0, -10, -4, -8, 0],
+                  rotate: [0, 1.5, -0.5, 1, 0],
+                }
             }
             transition={{
               duration: 5,
@@ -138,7 +138,7 @@ export default function Hero() {
             <span
               style={{
                 background:
-                  "linear-gradient(135deg, #6D5EF8 0%, #8A7CFF 40%, #c1ef18 100%)",
+                  "linear-gradient(135deg, #7908c4 0%, #9f20f6 30%, #c1ef18 70%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
