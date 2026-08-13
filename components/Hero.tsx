@@ -161,9 +161,7 @@ export default function Hero() {
               lineHeight: 1.75,
             }}
           >
-            DesignPav is crafting a premium digital experience focused on
-            designing modern websites, scalable web applications, and powerful
-            online brands.
+            Helping Brands get their space on the internet.
           </p>
           <p
             className="leading-relaxed"
