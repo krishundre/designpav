@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Unbounded } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -7,6 +7,13 @@ const inter = Inter({
   variable: "--font-inter",
   display: "swap",
   weight: ["300", "400", "500", "600", "700"],
+});
+
+const unbounded = Unbounded({
+  subsets: ["latin"],
+  variable: "--font-unbounded",
+  display: "swap",
+  weight: ["600", "800"],
 });
 
 export const metadata: Metadata = {
@@ -69,12 +76,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} h-full`}>
+    <html lang="en" className={`${inter.variable} ${unbounded.variable} h-full`}>
       <body className="min-h-full flex flex-col antialiased">
         {/* Skip to content – accessibility */}
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-[#6D5EF8] focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:text-sm focus:font-medium"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-[#A01EF4] focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:text-sm focus:font-medium"
         >
           Skip to content
         </a>
