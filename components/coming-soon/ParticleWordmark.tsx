@@ -75,8 +75,14 @@ export default function ParticleWordmark({ spice, colours }: { spice: Spice; col
       const o = off.getContext("2d");
       if (!o) return;
       const words = W < 560 ? ["DESIGN", "PAV"] : ["DESIGNPAV"];
-      const fs = Math.min(W / (words[0].length * 0.78), H / (words.length * 1.25));
+      let fs = Math.min(W / (words[0].length * 0.78), H / (words.length * 1.25));
       o.font = `800 ${fs}px ${fontFamily()}`;
+      // Shrink to fit: wide display fonts can overflow the estimate above.
+      const widest = Math.max(...words.map((w) => o.measureText(w).width));
+      if (widest > W * 0.92) {
+        fs *= (W * 0.92) / widest;
+        o.font = `800 ${fs}px ${fontFamily()}`;
+      }
       o.textAlign = "center";
       o.textBaseline = "middle";
       o.fillStyle = "#fff";
